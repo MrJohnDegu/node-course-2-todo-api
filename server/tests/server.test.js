@@ -102,3 +102,9 @@ describe('GET /todos:id', () => {
 
 
 });
+
+describe('DEL /todos:id', () => {
+    it('should return todo deleted doc', (done) =>{
+
+    });
+});
