@@ -146,18 +146,9 @@ describe('PATCH /todos:id', () => {
             .expect(200)
             .expect((res) => {
                 expect(res.body.todo).toInclude(testCompleted);
+                expect(res.body.todo.completedAt).toBeA('number');
             })
-            .end((err, res) => {
-                if (err) {
-                    return done(err);
-                }
-
-                Todo.find({ text: testCompleted.text }).then((todos) => {
-                    expect(todos.length).toBe(1);
-                    expect(todos[0].text).toBe(testCompleted.text);
-                    done();
-                }).catch((err) => done(err));
-            });
+            .end(done);
     });
 
     it('should return todo (completed: false, completedAt: null) updated doc', (done) => {
@@ -171,19 +162,10 @@ describe('PATCH /todos:id', () => {
             .send(testNotCompleted)
             .expect(200)
             .expect((res) => {
+                expect(res.body.todo).toInclude(testNotCompleted);
                 expect(res.body.todo.completedAt).toBe(null);
             })
-            .end((err, res) => {
-                if (err) {
-                    return done(err);
-                }
-
-                Todo.find({ text: testNotCompleted.text }).then((todos) => {
-                    expect(todos.length).toBe(1);
-                    expect(todos[0].completedAt).toBe(null);
-                    done();
-                }).catch((err) => done(err));
-            });
+            .end(done);
     });
 
     it('should return 404 if todo not found', (done) => {
