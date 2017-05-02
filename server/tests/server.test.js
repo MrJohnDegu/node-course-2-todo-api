@@ -10,7 +10,7 @@ const todos = [{
     text: 'First test todo'
 }, {
     _id: new ObjectID(),
-    text: 'Second test todo'
+    text: 'Second test todoooooo'
 }]
 
 beforeEach((done) => {
