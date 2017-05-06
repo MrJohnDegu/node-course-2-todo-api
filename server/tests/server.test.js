@@ -17,6 +17,10 @@ beforeEach((done) => {
     Todo.remove({}).then(() => {
         return Todo.insertMany(todos);
     }).then(() => done());
+
+    // User.remove({}).then(() => {
+    //     return User.
+    // })
 });
 
 describe('POST /todos', () => {
@@ -184,3 +188,17 @@ describe('PATCH /todos:id', () => {
             .end(done);
     });
 });
+
+
+// describe('POST /users', () => {
+//     it('should create account', (done) => {
+//         request(app)
+//             .post('/users')
+//             .send({ email: 'jcdeguzman88@gmail.com', password: 'password'})
+//             .expect(200)
+//             .expect((res) => {
+//                 expect(res.email).toBe('jcdeguzman88@gmail.com')
+//             })            
+//             .end(done);
+//     })
+// });
