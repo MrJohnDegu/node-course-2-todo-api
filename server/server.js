@@ -112,11 +112,7 @@ app.patch('/todos/:id', (req, res) => {
 // POST /users
 
 app.post('/users', (req, res) => {
-    var body = _.pick(req.body, ['email', 'password', 'confirm_password']);
-
-    if (body.password !== body.confirm_password) {
-        return res.status('400').send({ error: "Passwords are not the same" });
-    }
+    var body = _.pick(req.body, ['email', 'password']);
 
     var user = new User({
         email: body.email,
